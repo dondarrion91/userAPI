@@ -125,6 +125,10 @@ exports.deleteUser = async(req,res) => {
             });
         }
 
+        res.json({
+            message: "usuario eliminado con exito"
+        });
+
     }catch(error){
         console.log(error);
         res.status(500).json({
