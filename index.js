@@ -6,6 +6,9 @@ const morgan = require("morgan");
 // express
 const app = express();
 
+// variables de entorno
+require('dotenv').config({path: 'variables.env'});
+
 // database 
 const Users = require("./models/Users");
 Users.sync();
