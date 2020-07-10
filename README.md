@@ -82,3 +82,5 @@ filtro de nombre o apellido
 include=julian 
 ```
 filtra los usuarios que incluyen el string de include ya sea en el nombre o el apellido
+
+let params = req.query.date; console.log('salio por aca .... ',Object.keys(params)) //let dates = params[1].split(',') conditions["Birthday"] = { [Op[Object.keys(params)]]: Object.values(params) }; 

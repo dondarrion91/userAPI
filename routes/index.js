@@ -3,7 +3,9 @@ const router = express.Router();
 
 // controllers
 const userControllers = require("../controllers/userControllers");
-const filterControllers = require("../controllers/filterControllers");
+
+// filtros
+const filter = require("../middlewares/filters");
 
 module.exports = () => {
 
@@ -12,7 +14,7 @@ module.exports = () => {
      */
 
     // obtener todos los usuarios
-    router.get('/api/v1/user',userControllers.getUsers);
+    router.get('/api/v1/user',filter.filter,userControllers.getUsers);
 
     // obtener un usuario por primary key
     router.get('/api/v1/user/:id',userControllers.getOneUser);
@@ -25,13 +27,6 @@ module.exports = () => {
 
     // eliminar un usuario
     router.delete('/api/v1/user/:id',userControllers.deleteUser);
-
-
-    /**
-     * Filtros
-     */
-    router.get('/api/v1/filter',filterControllers.filterUsers);
-    
 
     return router;
 }
