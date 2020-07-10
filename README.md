@@ -29,7 +29,7 @@ GET: Obtiene una lista de todos los usuarios
 ```
 A este request se le pueden aplicar los siguientes filtros
 ```
-/api/v1/user?Birthday[between]=2000-08-23,2021-09-23&Birthday[lte]=2010-07-23&Name[substring]=ca&LastName[substring]=sa
+/api/v1/user?Birthday[gte]=1990-07-23&Birthday[between]=1990-07-23,1995-09-12&include=ne
 ```
 
 el query debe ser de la siguiente manera:
@@ -40,16 +40,17 @@ por ejemplo:
 ```
 Birthday[lte]=2010-07-23
 ```
-Se filtran los usuarios con cumpleaños menor a la fecha 2010-07-23
+Se filtran los usuarios con cumpleaños menor a la fecha 2010-07-23,
+los valores de las fechas se pueden pasar en formato YYYY-MM-DD o YYYY.
 
 Para el caso de fechas superiores se debe usar gte, para evaluar un rango de fechas usar between.
-Para filtrar por nombre y apellido se usa el parametro a filtrar y el tipo de filtro.
+Para filtrar por nombre y apellido se usa el query include y se pasa por valor una cadena de caracteres
 Por ejemplo:
 
 ```
-Name[substring]=ca&LastName[substring]=sa
+include=ju
 ```
-Este filtro devuelve los usarios que contengan "ca" en el nombre y "sa" en el apellido
+Este filtro devuelve los usuarios que contengan "ju" en el nombre o en el apellido
 
 Todos los filtros son independientes y se puede usar uno junto con el otro.
 

@@ -10,8 +10,11 @@ const app = express();
 require('dotenv').config({path: 'variables.env'});
 
 // database 
+const db = require('./config/db');
 const Users = require("./models/Users");
-Users.sync();
+db.sync() 
+  .then(() => console.log("Conectado a BBDD"))
+  .catch(error => console.log(error));
 
 // routes
 const routes = require('./routes/index');
