@@ -17,15 +17,9 @@ exports.addOne = (Model) => async(req,res) => {
 
     }catch(error){
         console.log(error);
-        if(error.name === "SequelizeUniqueConstraintError"){
-            res.status(500).json({
-                message: error.errors[0].message
-            });
-        }else{
-            res.status(500).json({
-                message: "Error"
-            });
-        }        
+        res.status(500).json({
+            message: error.errors[0].message
+        });       
     }
 }
 

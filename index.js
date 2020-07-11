@@ -32,6 +32,8 @@ app.use(morgan('dev'));
 // rutas
 app.use('/',routes());
 
-app.listen(port,host,() => {
+
+module.exports = app.listen(port,host,() => {
     console.log(`Server on port ${port}`);
 });
+

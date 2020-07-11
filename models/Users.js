@@ -8,9 +8,18 @@ const Users = db.define("User",{
         primaryKey: true,
         autoIncrement: true
     },
-    Name: Sequelize.STRING,
-    LastName: Sequelize.STRING,
-    Birthday: Sequelize.DATEONLY,
+    Name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    LastName: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    Birthday: {
+        type: Sequelize.DATEONLY,
+        allowNull: false
+    },
     Dni: {
         type: Sequelize.STRING,
         unique: true
