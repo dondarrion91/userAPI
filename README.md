@@ -28,9 +28,23 @@ GET: Obtiene una lista de todos los usuarios
 /api/v1/user
 ```
 A este request se le pueden aplicar los siguientes filtros
+Usuarios con fechas de cumpleaños mayores al valor elegido
 ```
-/api/v1/user?Birthday[gte]=1990-07-23&Birthday[between]=1990-07-23,1995-09-12&include=ne
+/api/v1/user?Birthday[gte]=1990-07-23
 ```
+Usuarios con fechas de cumpleaños menores al valor elegido
+```
+/api/v1/user?Birthday[lte]=2000-07-23
+```
+Usuarios que tengan fecha de cumpleaños entre el rango elegido
+```
+/api/v1/user?Birthday[between]=1990-07-23,1995-09-12
+```
+Usuarios que contengan la cadena de caracteres que se pasa en "include" en el campo Name o LastName
+```
+/api/v1/user?&include=ne
+```
+Todos los filtros pueden usarse de forma independiente o combinarse.
 
 el query debe ser de la siguiente manera:
 ```
@@ -51,8 +65,6 @@ Por ejemplo:
 include=ju
 ```
 Este filtro devuelve los usuarios que contengan "ju" en el nombre o en el apellido
-
-Todos los filtros son independientes y se puede usar uno junto con el otro.
 
 GET: Obtiene un usuario segun su id
 ```sh
