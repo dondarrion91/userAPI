@@ -25,24 +25,24 @@ npm start
 
 GET: Obtiene una lista de todos los usuarios
 ```sh
-/api/v1/user
+/api/v1/users
 ```
 A este request se le pueden aplicar los siguientes filtros
 Usuarios con fechas de cumpleaños mayores al valor elegido
 ```
-/api/v1/user?Birthday[gte]=1990-07-23
+/api/v1/users?Birthday[gte]=1990-07-23
 ```
 Usuarios con fechas de cumpleaños menores al valor elegido
 ```
-/api/v1/user?Birthday[lte]=2000-07-23
+/api/v1/users?Birthday[lte]=2000-07-23
 ```
 Usuarios que tengan fecha de cumpleaños entre el rango elegido
 ```
-/api/v1/user?Birthday[between]=1990-07-23,1995-09-12
+/api/v1/users?Birthday[between]=1990-07-23,1995-09-12
 ```
 Usuarios que contengan la cadena de caracteres que se pasa en "include" en el campo Name o LastName
 ```
-/api/v1/user?&include=ne
+/api/v1/users?&include=ne
 ```
 Todos los filtros pueden usarse de forma independiente o combinarse.
 
@@ -68,11 +68,11 @@ Este filtro devuelve los usuarios que contengan "ju" en el nombre o en el apelli
 
 GET: Obtiene un usuario segun su id
 ```sh
-/api/v1/user/:id
+/api/v1/users/:id
 ```
 POST: Agrega un usuario a la base de datos
 ```sh
-/api/v1/user/add
+/api/v1/users
 ```
 Se debe enviar un json con el siguiente formato , se deben respetar las mayusculas y el nombre de las propiedades ya que en el modelo estan definidos de la misma forma.
 ```sh

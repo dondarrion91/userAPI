@@ -14,19 +14,19 @@ module.exports = () => {
      */
 
     // obtener todos los usuarios
-    router.get('/api/v1/user',filter.filter,userControllers.getUsers);
+    router.get('/api/v1/users',filter.filter,userControllers.getUsers);
 
     // obtener un usuario por primary key
-    router.get('/api/v1/user/:id',userControllers.getOneUser);
+    router.get('/api/v1/users/:id',userControllers.getOneUser);
 
     // agregar usuario
-    router.post('/api/v1/user/add',userControllers.addUser);
+    router.post('/api/v1/users',userControllers.addUser);
 
     // actualizar un usuario
-    router.put('/api/v1/user/:id',userControllers.editUser);
+    router.put('/api/v1/users/:id',userControllers.editUser);
 
     // eliminar un usuario
-    router.delete('/api/v1/user/:id',userControllers.deleteUser);
+    router.delete('/api/v1/users/:id',userControllers.deleteUser);
 
     return router;
 }
