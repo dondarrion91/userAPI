@@ -27,12 +27,13 @@ GET: Obtiene una lista de todos los usuarios
 ```sh
 /api/v1/users
 ```
-A este request se le pueden aplicar los siguientes filtros
-Usuarios con fechas de cumpleaños mayores al valor elegido
+A este request se le pueden aplicar los siguientes filtros:
+
+Usuarios con fechas de cumpleaños mayor o igual al valor elegido
 ```
 /api/v1/users?Birthday[gte]=1990-07-23
 ```
-Usuarios con fechas de cumpleaños menores al valor elegido
+Usuarios con fechas de cumpleaños menor o igual al valor elegido
 ```
 /api/v1/users?Birthday[lte]=2000-07-23
 ```

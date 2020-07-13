@@ -20,7 +20,7 @@ exports.filter = async(req,res,next) => {
                 }
             }                                                 
         }                   
-    }      
+    }          
         
     // guarda el filtro en el objeto request para que llegue al controlador de usuarios
     req.filter = filter;

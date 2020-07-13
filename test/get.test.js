@@ -13,10 +13,10 @@ describe('API test,GET', () => {
     /**
      * GET
      */
-    describe('GET /api/v1/user', () => {
+    describe('GET /api/v1/users', () => {
         it("Devuelve un array con todos los usuarios",(done) => {
             chai.request(app)
-                .get("/api/v1/user")
+                .get("/api/v1/users")
                 .end((error,res) => {
                     res.should.have.status(200),
                     res.body.should.be.a("array")
@@ -25,11 +25,11 @@ describe('API test,GET', () => {
         })        
     })
 
-    describe('GET /api/v1/user?include=san', () => {
+    describe('GET /api/v1/users?include=san', () => {
         it("Devuelve un array con todos los usuarios que tengan la palabra san en el nombre o apellido",(done) => {
             const char = "san";
             chai.request(app)
-                .get(`/api/v1/user?include=${char}`)
+                .get(`/api/v1/users?include=${char}`)
                 .end((error,res) => {
                     res.should.have.status(200),
                     res.body.should.be.a("array")   
@@ -45,12 +45,12 @@ describe('API test,GET', () => {
         })        
     })
 
-    describe('GET /api/v1/user?Birthday[gte]=1980-07-23', () => {
+    describe('GET /api/v1/users?Birthday[gte]=1980-07-23', () => {
         it("usuarios con cumpleaños mayores a 1980-07-23",(done) => {
             const date = "1980-07-23";
             const limit = "gte"
             chai.request(app)
-                .get(`/api/v1/user?Birthday[${limit}]=${date}`)
+                .get(`/api/v1/users?Birthday[${limit}]=${date}`)
                 .end((error,res) => {
                     res.should.have.status(200),
                     res.body.should.be.a("array")   
@@ -64,12 +64,12 @@ describe('API test,GET', () => {
         })        
     })
 
-    describe('GET /api/v1/user?Birthday[lte]=1990-07-23', () => {
+    describe('GET /api/v1/users?Birthday[lte]=1990-07-23', () => {
         it("usuarios con cumpleaños menores a 1990-07-23",(done) => {
             const date = "1990-07-23";
             const limit = "lte"
             chai.request(app)
-                .get(`/api/v1/user?Birthday[${limit}]=${date}`)
+                .get(`/api/v1/users?Birthday[${limit}]=${date}`)
                 .end((error,res) => {
                     res.should.have.status(200),
                     res.body.should.be.a("array")    
@@ -83,13 +83,13 @@ describe('API test,GET', () => {
         })        
     })
 
-    describe('GET /api/v1/user?Birthday[gte]=1980-07-23&Birthday[between]=1990-07-23,2005-07-23&?include=san', () => {
+    describe('GET /api/v1/users?Birthday[gte]=1980-07-23&Birthday[between]=1990-07-23,2005-07-23&?include=san', () => {
         it("usuarios con cumpleaños mayores a 1980-07-23 y que esten en un rango de 1990-07-23 y 2005-07-23 e incluye la palabra 'san' en el nombre o apellido",(done) => {
             const date = "1980-07-23";
             const limit = "lte";
             const char = "ga";
             chai.request(app)
-                .get(`/api/v1/user?Birthday[${limit}]=${date}&Birthday[between]=1990-07-23,2005-07-23&include=${char}`)
+                .get(`/api/v1/users?Birthday[${limit}]=${date}&Birthday[between]=1990-07-23,2005-07-23&include=${char}`)
                 .end((error,res) => {
                     res.should.have.status(200),
                     res.body.should.be.a("array") 
@@ -111,12 +111,12 @@ describe('API test,GET', () => {
         })        
     })
 
-    describe('GET /api/v1/user?Birthday[gte]=1980-07-23&Birthday[between]=1990-07-23,2005-07-23', () => {
+    describe('GET /api/v1/users?Birthday[gte]=1980-07-23&Birthday[between]=1990-07-23,2005-07-23', () => {
         it("usuarios con cumpleaños mayores a 1980-07-23 y que esten en un rango de 1990-07-23 y 2005-07-23",(done) => {
             const date = "1980-07-23";
             const limit = "lte"
             chai.request(app)
-                .get(`/api/v1/user?Birthday[${limit}]=${date}&Birthday[between]=1990-07-23,2005-07-23`)
+                .get(`/api/v1/users?Birthday[${limit}]=${date}&Birthday[between]=1990-07-23,2005-07-23`)
                 .end((error,res) => {
                     res.should.have.status(200),
                     res.body.should.be.a("array") 
@@ -133,11 +133,11 @@ describe('API test,GET', () => {
         })        
     })
 
-    describe('GET /api/v1/user/:id', () => {
+    describe('GET /api/v1/users/:id', () => {
         it("Devuelve un objeto con el usuario segun el id",(done) => {
             const id = 1;
             chai.request(app)
-                .get(`/api/v1/user/${id}`)
+                .get(`/api/v1/users/${id}`)
                 .end((error,res) => {
                     res.should.have.status(200),
                     res.body.should.be.a("object")

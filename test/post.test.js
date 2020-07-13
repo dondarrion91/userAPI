@@ -13,7 +13,7 @@ describe('API test,POST', () => {
      * POST
      */
     
-    describe('POST /api/v1/user/add', () => {
+    describe('POST /api/v1/user', () => {
         it("Crea un nuevo usuario si el numero de dni no esta repetido",(done) => {
             const usuario = [
                 {
@@ -37,7 +37,7 @@ describe('API test,POST', () => {
             ]
             usuario.forEach(usuario => {
                 chai.request(app)
-                .post("/api/v1/user/add")
+                .post("/api/v1/users")
                 .send(usuario)
                 .end((error,res) => {
                     res.should.have.status(200),                    
