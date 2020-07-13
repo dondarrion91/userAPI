@@ -2,16 +2,24 @@ const { Op } = require("sequelize");
 
 exports.filter = async(req,res,next) => {
 
-    let filter = {};
-
+    let filter = {};    
+    
     // Este codigo arma dinamicamente un objeto con el comparador Op de sequelize ya listo para pasarlo en el where del select
-    for(x in req.query){        
-        for (const [key, value] of Object.entries(req.query[x])) {                                                   
+    for(x in req.query){                
+        for (const [key, value] of Object.entries(req.query[x])) {    
+            console.log(key)                                               
             if(x !== "include"){
-                filter[x] = {
-                    ...filter[x],
-                    [Op[key]] : value.split(',')  
-                } 
+                if(key !== "between"){
+                    filter[x] = {
+                        ...filter[x],
+                        [Op[key]] : value
+                    } 
+                }else{
+                    filter[x] = {
+                        ...filter[x],
+                        [Op[key]] : value.split(',')  
+                    } 
+                }                
             }else{
                 filter = {
                     ...filter,
