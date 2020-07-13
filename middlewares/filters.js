@@ -6,8 +6,7 @@ exports.filter = async(req,res,next) => {
     
     // Este codigo arma dinamicamente un objeto con el comparador Op de sequelize ya listo para pasarlo en el where del select
     for(x in req.query){                
-        for (const [key, value] of Object.entries(req.query[x])) {    
-            console.log(key)                                               
+        for (const [key, value] of Object.entries(req.query[x])) {                                                             
             if(x !== "include"){
                 if(key !== "between"){
                     filter[x] = {
