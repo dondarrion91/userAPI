@@ -1,18 +1,16 @@
-// agregar un nuevo usuario
-
-
+// agregar un nuevo elemento al modelo
 exports.addOne = (Model) => async(req,res) => {    
     try{
         const newUser = await Model.create(req.body);
 
         if(!newUser){
             res.status(500).json({
-                message: "Error al crear el usuario"
+                message: "post failed"
             });
         }
 
         res.json({
-            message: "Usuario creado con exito"
+            message: "added successfully"
         });
 
     }catch(error){
@@ -23,7 +21,7 @@ exports.addOne = (Model) => async(req,res) => {
     }
 }
 
-// obtiene todos los usuarios
+// obtiene todos los usuarios segun el filtro que obtenga del middleware filter
 exports.getAll = (Model) => async(req,res) => {    
     try{  
                     
@@ -47,11 +45,10 @@ exports.getAll = (Model) => async(req,res) => {
     }
 }
 
-// obtiene todos los usuarios
+// obtiene un elemento del modelo segun su primary key
 exports.getOne = (Model) => async(req,res) => {
     try{        
-        // obtiene un usuario por el pk
-        // obtiene todos los usuarios de la tabla
+        // obtiene un objeto por el pk        
         const data = await Model.findOne({
             where: {
                 id: req.params.id
@@ -64,7 +61,7 @@ exports.getOne = (Model) => async(req,res) => {
             });
         }
         
-        // envia al cliente el usuario
+        // envia al cliente el objeto
         res.json(data);
 
     }catch(error){
@@ -75,7 +72,7 @@ exports.getOne = (Model) => async(req,res) => {
     }
 }
 
-// actualizar datos de usuario
+// actualizar datos del modelo
 exports.editOne = (Model) =>  async(req,res) => {
     
     try{
@@ -85,14 +82,16 @@ exports.editOne = (Model) =>  async(req,res) => {
             }
         });
 
+        // si no encuentra el elemento
         if(!update){
             res.status(500).json({
-                message: "No se pudo actualizar el usuario"
+                message: "Can't update"
             });
         }
 
+        // si pudo actualizarlo ,envia un mensaje de confirmación
         res.json({
-            message: "Usuario actualizado"
+            message: "Updated"
         });
     }catch(error){
         console.log(error);
@@ -102,10 +101,10 @@ exports.editOne = (Model) =>  async(req,res) => {
     }
 }
 
-// borrar usuario
+// borrar elemento del modelo segun el primary key
 exports.deleteOne = (Model) => async(req,res) => {
     try{
-        // elimina el usuario por el Primary Key
+        // elimina el elemento por el Primary Key
         const deleted = await Model.destroy({
             where: {
                 id: req.params.id

@@ -3,7 +3,7 @@ const Users = require('../models/Users');
 // controlador principal
 const mainController = require("./mainController");
 
-
+// exportar metodos
 exports.addUser = mainController.addOne(Users);
 exports.getUsers = mainController.getAll(Users);
 exports.getOneUser = mainController.getOne(Users);
