@@ -87,7 +87,7 @@ Se debe enviar un json con el siguiente formato , se deben respetar las mayuscul
 ```
 PUT: Modifica un usuario con el numero de id
 ```sh
-/api/v1/user/:id
+/api/v1/users/:id
 ```
 Se debe enviar un json con alguno de las siguientes propiedades
 ```sh
@@ -101,6 +101,6 @@ Se debe enviar un json con alguno de las siguientes propiedades
 
 DELETE: Elimina un usuario con el numero de id
 ```sh
-/api/v1/user/:id
+/api/v1/users/:id
 ```
 
